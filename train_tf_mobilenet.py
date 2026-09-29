@@ -6,7 +6,7 @@ from load_data import load_dataframe_xray
 IMG_SIZE = (224, 224)
 RESULTS_PATH = './results'
 EXPERIMENT_PREFIX = 'XRAY_CLA_'
-EPOCHS = 10
+EPOCHS = 800
 
 # PASO 1: Cargar y preprocesar los datos
 # Cargar y preprocesar los datos

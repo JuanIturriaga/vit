@@ -10,6 +10,12 @@ num_heads = 4
 transformer_layers = 4
 num_classes = 2
 
+RESULTS_PATH = './results'
+EXPERIMENT_PREFIX = 'XRAY_VIT_'
+IMG_SIZE = (input_shape[0], input_shape[1])
+EPOCHS = 300
+
+
 # 1. Capa para extraer parches de la imagen original
 class Patches(tf.keras.layers.Layer):
     def __init__(self, patch_size):
@@ -145,7 +151,7 @@ test_ds = dataset_builder.build(test_df, nombres_clases)
 
 history = vit_model.fit(
     train_ds,
-    epochs=50,
+    epochs=EPOCHS,
     validation_data=test_ds
 )
 
@@ -154,10 +160,7 @@ history = vit_model.fit(
 # Busca un id al experimento basado en el prefijo y las capetas existentes en resultados
 import os
 
-RESULTS_PATH = './results'
-EXPERIMENT_PREFIX = 'XRAY_VIT_'
-IMG_SIZE = (input_shape[0], input_shape[1])
-EPOCHS = 50
+
 
 os.makedirs(RESULTS_PATH, exist_ok=True)
 
